@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![ToolNest Banner](./public/screenshots/screenshot-1.png)
+![ToolNest Banner](https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80)
 
 ### Discover, Compare, & Review 500+ Top AI Tools
 
@@ -25,34 +25,11 @@
 
 ---
 
-## 📸 Real Project Screenshots
-
-<div align="center">
-
-### 🏠 Landing Page & Hero Search
-![Landing Page](./public/screenshots/screenshot-1.png)
-
-### 🔎 AI Tool Directory & Filters
-![Directory](./public/screenshots/screenshot-2.png)
-
-### 📋 Detailed AI Tool View & AI Specifications
-![Tool Details](./public/screenshots/screenshot-3.png)
-
-### 💳 Stripe Pro Membership Checkout
-![Stripe Checkout](./public/screenshots/screenshot-4.png)
-
-### 📊 Admin Analytics & Dashboard Overview
-![Admin Dashboard](./public/screenshots/screenshot-5.png)
-
-</div>
-
----
-
 ## 🌟 Key Features
 
 ### 🏠 Rich Landing Page & UI Aesthetics
 - **Live Trending AI Tool Swiper**: Continuous 2-row infinite floating marquee showcasing trending AI tools with star ratings, pricing badges, and categories.
-- **Responsive Mobile Non-Overlapping Search**: Intelligent hero search bar optimized for desktop, tablet, and mobile screens without text truncation.
+- **Responsive Mobile Search**: Intelligent hero search bar optimized for desktop, tablet, and mobile screens without text truncation.
 - **Platform Analytics Banner**: Animated counter metrics showcasing 500+ AI Tools, 10,000+ Active Users, and 25,000+ Reviews.
 - **Dark Glassmorphism UI**: Curated dark palette with subtle blur backdrop filters, glowing blur blobs, and smooth micro-animations.
 
@@ -78,6 +55,20 @@
 
 ---
 
+## 🖥️ Application Architecture & Page Overview
+
+| Route | View Description | Core Interactive Features |
+| :--- | :--- | :--- |
+| `/` | 🏠 **Landing Page** | Live bi-directional swiper marquee, hero search, category quick-pills, counter stats, user testimonials, FAQ accordion |
+| `/tools` | 🔎 **Directory Page** | Real-time multi-filter tool grid (category, pricing, sort), search bar, pagination controls |
+| `/tools/[id]` | 📋 **Tool Detail Page** | Full descriptions, AI model specifications, company origin, launch year, historical context, review submission form, bookmark toggle |
+| `/payment` | 💳 **Pro Membership** | Stripe credit card checkout form, 256-bit security badge, instant Pro user role activation |
+| `/dashboard` | 📊 **User & Admin Hub** | User profile settings, submitted tools management, review history, saved bookmarks, and Admin Analytics charts |
+| `/about` | 👤 **About Developer** | Lead Developer profile card for Atahar Shihab with direct email, GitHub, LinkedIn, and Facebook icon links |
+| `/contact` | ✉️ **Contact Developer** | Interactive contact message form and direct developer social channels |
+
+---
+
 ## 🛠️ Technology Stack
 
 - **Framework**: [Next.js 16 (App Router & Turbopack)](https://nextjs.org/)
@@ -92,13 +83,8 @@
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Environment Setup (.env.local)
 
-### 1. Prerequisites
-- Node.js `v18.0.0` or higher
-- npm `v9.0.0` or higher
-
-### 2. Environment Variables Template (.env.local)
 Create a `.env.local` file in your root folder:
 ```env
 NEXT_PUBLIC_API_URL=https://toolnest-server.onrender.com/api
@@ -106,7 +92,7 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_your_stripe_publishable_key_here
 NEXT_PUBLIC_GOOGLE_CLIENT_ID=your_google_client_id_here.apps.googleusercontent.com
 ```
 
-### 3. Run Locally
+### Run Locally
 ```bash
 npm install
 npm run dev
@@ -124,7 +110,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 📬 Contact & Support
+## 📬 Developer Contact
 
 Developed with ❤️ by **Atahar Shihab**:
 - 📧 Email: [![Email](https://img.shields.io/badge/-Email-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:shihabatahar@gmail.com)
