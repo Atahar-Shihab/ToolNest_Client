@@ -85,11 +85,11 @@ export default function AboutPage() {
             className="glass-card p-8 md:p-12 border border-primary/30 max-w-4xl mx-auto shadow-2xl relative overflow-hidden"
           >
             <div className="flex flex-col md:flex-row items-center gap-8">
-              <div className="w-32 h-32 rounded-3xl bg-gradient-to-tr from-primary to-secondary p-1 shrink-0 shadow-xl">
+              <div className="w-36 h-36 rounded-3xl bg-gradient-to-tr from-primary to-secondary p-1 shrink-0 shadow-2xl relative overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80" 
+                  src="/atahar-shihab.png" 
                   alt="Atahar Shihab" 
-                  className="w-full h-full object-cover rounded-[22px]"
+                  className="w-full h-full object-cover object-top rounded-[22px]"
                 />
               </div>
               
