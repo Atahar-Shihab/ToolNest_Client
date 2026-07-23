@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![ToolNest Banner](https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80)
+![ToolNest Banner](./public/screenshots/screenshot-1.png)
 
 ### Discover, Compare, & Review 500+ Top AI Tools
 
@@ -14,14 +14,35 @@
 
 ---
 
-### 👨‍💻 Developer & Contact
+### 👨‍💻 Connect with Developer (Atahar Shihab)
 
-**Atahar Shihab** — Lead Full Stack Software Engineer
+[![Email](https://img.shields.io/badge/-Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:shihabatahar@gmail.com)
+[![GitHub](https://img.shields.io/badge/-GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Atahar-Shihab)
+[![LinkedIn](https://img.shields.io/badge/-LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/atahar-shihab)
+[![Facebook](https://img.shields.io/badge/-Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://www.facebook.com/atahar.shihab.740192/)
 
-[![Email](https://img.shields.io/badge/Email-shihabatahar%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:shihabatahar@gmail.com)
-[![GitHub](https://img.shields.io/badge/GitHub-Atahar--Shihab-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Atahar-Shihab)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-atahar--shihab-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/atahar-shihab)
-[![Facebook](https://img.shields.io/badge/Facebook-atahar.shihab.740192-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://www.facebook.com/atahar.shihab.740192/)
+</div>
+
+---
+
+## 📸 Real Project Screenshots
+
+<div align="center">
+
+### 🏠 Landing Page & Hero Search
+![Landing Page](./public/screenshots/screenshot-1.png)
+
+### 🔎 AI Tool Directory & Filters
+![Directory](./public/screenshots/screenshot-2.png)
+
+### 📋 Detailed AI Tool View & AI Specifications
+![Tool Details](./public/screenshots/screenshot-3.png)
+
+### 💳 Stripe Pro Membership Checkout
+![Stripe Checkout](./public/screenshots/screenshot-4.png)
+
+### 📊 Admin Analytics & Dashboard Overview
+![Admin Dashboard](./public/screenshots/screenshot-5.png)
 
 </div>
 
@@ -31,7 +52,7 @@
 
 ### 🏠 Rich Landing Page & UI Aesthetics
 - **Live Trending AI Tool Swiper**: Continuous 2-row infinite floating marquee showcasing trending AI tools with star ratings, pricing badges, and categories.
-- **Responsive Non-Overlapping Search**: Intelligent hero search bar optimized for desktop, tablet, and mobile screens without text truncation.
+- **Responsive Mobile Non-Overlapping Search**: Intelligent hero search bar optimized for desktop, tablet, and mobile screens without text truncation.
 - **Platform Analytics Banner**: Animated counter metrics showcasing 500+ AI Tools, 10,000+ Active Users, and 25,000+ Reviews.
 - **Dark Glassmorphism UI**: Curated dark palette with subtle blur backdrop filters, glowing blur blobs, and smooth micro-animations.
 
@@ -55,35 +76,6 @@
 ### 💳 Pro Membership & Payments
 - **Stripe Integration**: One-time $5.00 lifetime Pro upgrade with 256-bit encrypted credit card processing via Stripe Elements.
 
-### 🔐 Authentication
-- **Dual Auth Engine**: Custom JWT auth (with bcrypt password hashing) + Google OAuth 2.0 single sign-on.
-
----
-
-## 📸 Platform Interface Screenshots
-
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│  TOOLNEST | Discover the Best AI Tools for Every Task                   │
-├────────────────────────────────────────────────────────────────────────┤
-│  [ Search AI tools by name or category... ]  ( Search )                │
-│                                                                        │
-│  [ Writing ] [ Coding ] [ Design ] [ Marketing ] [ Productivity ]      │
-├────────────────────────────────────────────────────────────────────────┤
-│  LIVE TRENDING MARQUEE                                                 │
-│  [ ChatGPT - GPT-4o ] ➔ [ Claude 3.5 Sonnet ] ➔ [ Cursor - AI IDE ]   │
-│  [ Midjourney v6.1 ] ➔ [ Suno v3.5 Music ] ➔ [ Perplexity Search ]    │
-└────────────────────────────────────────────────────────────────────────┘
-```
-
-| Page | Description |
-| :--- | :--- |
-| 🏠 **Landing Page** | Hero search, continuous swiper, featured grid, categories, stats, testimonials, FAQ |
-| 🔎 **Directory Page** | Real-time multi-filter tool grid with pagination and instant search |
-| 📋 **Tool Detail Page** | Full descriptions, AI model specs, company origin, history, features, reviews |
-| 💳 **Pro Payment Page** | Stripe credit card checkout form with lifetime Pro badge activation |
-| 📊 **Admin Dashboard** | Platform analytics, user role controls, tool approval queue |
-
 ---
 
 ## 🛠️ Technology Stack
@@ -106,26 +98,17 @@
 - Node.js `v18.0.0` or higher
 - npm `v9.0.0` or higher
 
-### 2. Installation
-```bash
-# Clone the client repository
-git clone https://github.com/Atahar-Shihab/ToolNest_Client.git
-cd ToolNest_Client
-
-# Install dependencies
-npm install
-```
-
-### 3. Environment Variables
-Create a `.env.local` file in the root directory:
+### 2. Environment Variables Template (.env.local)
+Create a `.env.local` file in your root folder:
 ```env
 NEXT_PUBLIC_API_URL=https://toolnest-server.onrender.com/api
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_51TjahMGkjNUWiLm4l9nUmsq6e6KkWk8Qj0WdndQ3M20QG5E0PZqVn07RylkYJt2x3M8A6pL
-NEXT_PUBLIC_GOOGLE_CLIENT_ID=366416750226-s9qi37tog7erpo5n1701bqhj3d1dvp6i.apps.googleusercontent.com
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_your_stripe_publishable_key_here
+NEXT_PUBLIC_GOOGLE_CLIENT_ID=your_google_client_id_here.apps.googleusercontent.com
 ```
 
-### 4. Run Locally
+### 3. Run Locally
 ```bash
+npm install
 npm run dev
 ```
 Open [http://localhost:3000](http://localhost:3000) in your browser.
@@ -144,9 +127,9 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ## 📬 Contact & Support
 
 Developed with ❤️ by **Atahar Shihab**:
-- 📧 Email: [shihabatahar@gmail.com](mailto:shihabatahar@gmail.com)
-- 🐙 GitHub: [https://github.com/Atahar-Shihab](https://github.com/Atahar-Shihab)
-- 💼 LinkedIn: [https://www.linkedin.com/in/atahar-shihab](https://www.linkedin.com/in/atahar-shihab)
-- 📘 Facebook: [https://www.facebook.com/atahar.shihab.740192/](https://www.facebook.com/atahar.shihab.740192/)
+- 📧 Email: [![Email](https://img.shields.io/badge/-Email-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:shihabatahar@gmail.com)
+- 🐙 GitHub: [![GitHub](https://img.shields.io/badge/-GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/Atahar-Shihab)
+- 💼 LinkedIn: [![LinkedIn](https://img.shields.io/badge/-LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/atahar-shihab)
+- 📘 Facebook: [![Facebook](https://img.shields.io/badge/-Facebook-1877F2?style=flat&logo=facebook&logoColor=white)](https://www.facebook.com/atahar.shihab.740192/)
 
 License: [MIT](LICENSE)
