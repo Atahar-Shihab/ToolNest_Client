@@ -25,6 +25,7 @@
 - Platform stats
 - User testimonials
 - FAQ section
+- Smooth scroll-to-top button & Open Graph SEO metadata
 
 ### 🔐 Authentication & Security
 - Secure JWT Authentication
