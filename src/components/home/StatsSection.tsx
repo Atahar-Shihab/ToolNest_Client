@@ -9,10 +9,10 @@ export function StatsSection() {
   });
 
   const stats = [
-    { label: "AI Tools", value: 500, suffix: "+" },
-    { label: "Active Users", value: 10000, suffix: "+" },
-    { label: "Reviews", value: 25000, suffix: "+" },
-    { label: "Categories", value: 50, suffix: "+" },
+    { label: "Curated AI Tools", value: 50, suffix: "+" },
+    { label: "Core Categories", value: 8, suffix: "" },
+    { label: "Verified Links & Specs", value: 100, suffix: "%" },
+    { label: "Active Tech Seekers", value: 1500, suffix: "+" },
   ];
 
   return (

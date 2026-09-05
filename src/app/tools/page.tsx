@@ -4,13 +4,14 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Search, Filter, Star, ChevronLeft, ChevronRight, Bookmark } from 'lucide-react';
+import { Search, Filter, Star, ChevronLeft, ChevronRight, Bookmark, ArrowLeftRight } from 'lucide-react';
 import { Tool, ToolsResponse } from '@/types';
 import api from '@/lib/api';
 import { toast } from 'react-hot-toast';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
+import { ShareToolNestBanner } from '@/components/common/ShareToolNestBanner';
 
 const CATEGORIES = ['All', 'Writing', 'Coding', 'Design', 'Marketing', 'Productivity', 'Research', 'Video', 'Music'];
 const PRICING = ['All', 'Free Plan', 'Free Trial', 'Paid'];
@@ -114,6 +115,15 @@ export default function ToolsPage() {
             <p className="text-muted max-w-2xl mx-auto text-base md:text-lg">
               Discover and filter through our comprehensive directory of AI tools to find exactly what you need.
             </p>
+            <div className="pt-2 flex justify-center">
+              <Link
+                href="/compare"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold glass border border-border text-foreground hover:bg-surface-hover hover:border-primary/40 transition-all shadow-sm"
+              >
+                <ArrowLeftRight size={14} className="text-primary" />
+                <span>Need to decide? Compare AI Tools Side-by-Side</span>
+              </Link>
+            </div>
           </div>
 
           {/* Search & Filters Bar */}
@@ -266,6 +276,9 @@ export default function ToolsPage() {
               </button>
             </div>
           )}
+
+          {/* Referral Share Banner */}
+          <ShareToolNestBanner />
         </div>
       </main>
       <Footer />

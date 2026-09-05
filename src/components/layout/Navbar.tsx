@@ -40,6 +40,7 @@ export function Navbar() {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Tools", path: "/tools" },
+    { name: "Compare", path: "/compare" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
   ];

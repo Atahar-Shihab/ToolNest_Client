@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "ToolNest | Premium AI Tool Discovery Platform",
-  description: "Discover, compare, filter, and review 500+ top AI tools across writing, coding, design, video, and productivity.",
+  description: "Discover, compare, filter, and review 50+ top curated AI tools across writing, coding, design, video, and productivity.",
   keywords: ["AI Tools", "Artificial Intelligence", "ChatGPT", "Claude", "Cursor", "AI Directory", "Productivity"],
   authors: [{ name: "ToolNest Team" }],
   openGraph: {

@@ -41,7 +41,7 @@ export function HeroSection() {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-xs sm:text-sm font-semibold text-primary mb-6"
           >
             <Sparkles size={15} />
-            <span>Discover & Compare 500+ Top AI Tools</span>
+            <span>Discover & Compare 50+ Top AI Tools</span>
           </motion.div>
 
           {/* Heading */}

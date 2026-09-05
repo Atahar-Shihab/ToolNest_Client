@@ -166,7 +166,7 @@ export default function AboutPage() {
         <section className="pb-16 text-center">
           <div className="container mx-auto px-4 max-w-3xl space-y-6">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">Ready to explore the future of AI?</h2>
-            <p className="text-muted text-lg">Browse our curated directory of over 500+ tools or submit your own.</p>
+            <p className="text-muted text-lg">Browse our curated directory of over 50+ hand-curated tools or submit your own.</p>
             <div className="flex justify-center gap-4">
               <Link href="/tools">
                 <Button size="lg">Explore Directory</Button>
