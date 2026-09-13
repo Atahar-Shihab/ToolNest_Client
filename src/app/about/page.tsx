@@ -99,7 +99,7 @@ export default function AboutPage() {
                     <Code2 size={14} /> Lead Developer & Designer
                   </span>
                   <h3 className="text-3xl font-extrabold text-foreground">Atahar Shihab</h3>
-                  <p className="text-muted text-sm font-medium">Full Stack Software Engineer & AI Advocate</p>
+                  <p className="text-muted text-sm font-medium">Full Stack Software Engineer</p>
                 </div>
                 
                 <p className="text-muted text-base leading-relaxed">
