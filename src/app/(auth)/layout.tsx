@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Rocket } from 'lucide-react';
+import { ToolNestLogo } from "@/components/ui/ToolNestLogo";
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -12,11 +12,8 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
 
       {/* Top Brand Logo */}
       <div className="z-10 mb-6">
-        <Link href="/" className="flex items-center space-x-3 group">
-          <div className="bg-gradient-to-tr from-primary to-secondary p-2.5 rounded-xl shadow-lg shadow-primary/20 group-hover:scale-105 transition-transform">
-            <Rocket className="h-6 w-6 text-white" />
-          </div>
-          <span className="text-2xl font-bold tracking-tight text-white">ToolNest</span>
+        <Link href="/" className="flex items-center group">
+          <ToolNestLogo size={42} withText={true} textClassName="text-2xl font-bold tracking-tight text-white" />
         </Link>
       </div>
 
