@@ -77,7 +77,7 @@ export default function LoginPage() {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.4 }}
-        className="glass rounded-3xl p-8 shadow-[0_0_50px_rgba(0,212,255,0.12)] border border-white/10 relative overflow-hidden backdrop-blur-2xl"
+        className="glass rounded-3xl p-8 shadow-[0_0_50px_rgba(0,212,255,0.12)] border border-border relative overflow-hidden backdrop-blur-2xl"
       >
         {/* Top Feature Pill */}
         <div className="flex justify-center mb-6">

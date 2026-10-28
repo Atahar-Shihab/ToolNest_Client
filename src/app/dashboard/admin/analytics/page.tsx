@@ -78,7 +78,7 @@ export default function AnalyticsPage() {
     >
       <div>
         <h1 className="text-3xl font-bold text-gradient">Analytics Dashboard</h1>
-        <p className="text-gray-400 mt-2">Overview of ToolNest platform metrics.</p>
+        <p className="text-muted mt-2">Overview of ToolNest platform metrics.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -89,8 +89,8 @@ export default function AnalyticsPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="glass p-6 rounded-2xl border border-white/10">
-          <h3 className="text-lg font-semibold text-white mb-6">Tools by Category</h3>
+        <div className="glass p-6 rounded-2xl border border-border">
+          <h3 className="text-lg font-semibold text-foreground mb-6">Tools by Category</h3>
           <div className="h-[300px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={data.categoryStats} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
@@ -107,8 +107,8 @@ export default function AnalyticsPage() {
           </div>
         </div>
 
-        <div className="glass p-6 rounded-2xl border border-white/10">
-          <h3 className="text-lg font-semibold text-white mb-6">Tools by Pricing Type (Estimated)</h3>
+        <div className="glass p-6 rounded-2xl border border-border">
+          <h3 className="text-lg font-semibold text-foreground mb-6">Tools by Pricing Type (Estimated)</h3>
           <div className="h-[300px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
@@ -134,8 +134,8 @@ export default function AnalyticsPage() {
           </div>
         </div>
 
-        <div className="glass p-6 rounded-2xl border border-white/10 lg:col-span-2">
-          <h3 className="text-lg font-semibold text-white mb-6">Average Rating by Category</h3>
+        <div className="glass p-6 rounded-2xl border border-border lg:col-span-2">
+          <h3 className="text-lg font-semibold text-foreground mb-6">Average Rating by Category</h3>
           <div className="h-[300px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={data.categoryStats} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
@@ -157,13 +157,13 @@ export default function AnalyticsPage() {
 
 function StatCard({ icon, title, value }: { icon: React.ReactNode, title: string, value: number }) {
   return (
-    <div className="glass p-6 rounded-2xl border border-white/10 flex items-center gap-4 hover:border-primary/50 transition-colors">
-      <div className="p-4 bg-white/5 rounded-xl border border-white/10">
+    <div className="glass p-6 rounded-2xl border border-border flex items-center gap-4 hover:border-primary/50 transition-colors">
+      <div className="p-4 bg-surface-hover/50 rounded-xl border border-border">
         {icon}
       </div>
       <div>
-        <p className="text-gray-400 text-sm font-medium mb-1">{title}</p>
-        <h4 className="text-3xl font-bold text-white">{value}</h4>
+        <p className="text-muted text-sm font-medium mb-1">{title}</p>
+        <h4 className="text-3xl font-bold text-foreground">{value}</h4>
       </div>
     </div>
   );

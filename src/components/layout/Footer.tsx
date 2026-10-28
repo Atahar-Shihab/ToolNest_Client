@@ -73,6 +73,7 @@ export function Footer() {
             <h3 className="font-semibold mb-4 text-foreground">Explore</h3>
             <ul className="space-y-2 text-sm text-muted">
               <li><Link href="/tools" className="hover:text-primary transition-colors">All Tools Directory</Link></li>
+              <li><Link href="/compare" className="hover:text-primary transition-colors text-primary font-medium">Compare AI Tools</Link></li>
               <li><Link href="/tools?category=Writing" className="hover:text-primary transition-colors">Writing Assistants</Link></li>
               <li><Link href="/tools?category=Coding" className="hover:text-primary transition-colors">Coding AI</Link></li>
               <li><Link href="/tools?category=Design" className="hover:text-primary transition-colors">Design Tools</Link></li>

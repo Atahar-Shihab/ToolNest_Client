@@ -6,11 +6,12 @@ import { Tool, Review } from '@/types';
 import api from '@/lib/api';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'react-hot-toast';
-import { Star, Bookmark, ExternalLink, CheckCircle2, User, Clock, ChevronRight, Building2, Calendar } from 'lucide-react';
+import { Star, Bookmark, ExternalLink, CheckCircle2, User, Clock, ChevronRight, Building2, Calendar, Share2, ArrowLeftRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
+import { ShareModal } from '@/components/tools/ShareModal';
 
 export default function ToolDetailsPage() {
   const params = useParams();
@@ -23,7 +24,9 @@ export default function ToolDetailsPage() {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [imageFailed, setImageFailed] = useState(false);
+  const [failedRelatedImages, setFailedRelatedImages] = useState<Record<string, boolean>>({});
   const [activeTab, setActiveTab] = useState<'overview' | 'features' | 'reviews'>('overview');
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   
   // Review form
   const [rating, setRating] = useState(5);
@@ -223,27 +226,45 @@ export default function ToolDetailsPage() {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap sm:flex-nowrap gap-3 w-full md:w-auto">
+              <div className="flex flex-wrap sm:flex-nowrap gap-2.5 w-full md:w-auto">
                 <button
                   onClick={handleToggleBookmark}
-                  className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold transition-all shadow-md border ${
+                  className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-semibold transition-all shadow-md border text-sm ${
                     isBookmarked
                       ? 'bg-secondary text-white border-secondary hover:bg-secondary/90'
                       : 'glass border-border text-foreground hover:bg-surface-hover'
                   }`}
                 >
-                  <Bookmark size={18} className={isBookmarked ? 'fill-white' : ''} />
+                  <Bookmark size={16} className={isBookmarked ? 'fill-white' : ''} />
                   <span>{isBookmarked ? 'Bookmarked' : 'Bookmark'}</span>
+                </button>
+
+                <Link
+                  href={`/compare?tool1=${tool._id}`}
+                  className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-semibold glass border-border text-foreground hover:bg-surface-hover transition-all shadow-md text-sm"
+                  title="Compare with another AI tool"
+                >
+                  <ArrowLeftRight size={16} className="text-primary" />
+                  <span>Compare</span>
+                </Link>
+
+                <button
+                  onClick={() => setIsShareModalOpen(true)}
+                  className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-semibold glass border-border text-foreground hover:bg-surface-hover transition-all shadow-md text-sm"
+                  title="Share this tool with friends or colleagues"
+                >
+                  <Share2 size={16} className="text-secondary" />
+                  <span>Share</span>
                 </button>
 
                 <a
                   href={tool.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold bg-primary hover:bg-primary/90 text-white transition-all shadow-lg"
+                  className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-semibold bg-primary hover:bg-primary/90 text-white transition-all shadow-lg text-sm"
                 >
                   <span>Visit Website</span>
-                  <ExternalLink size={18} />
+                  <ExternalLink size={16} />
                 </a>
               </div>
             </div>
@@ -445,13 +466,29 @@ export default function ToolDetailsPage() {
                 {relatedTools.map(rt => (
                   <Link href={`/tools/${rt._id}`} key={rt._id} className="block group">
                     <div className="glass-card p-4 flex flex-col h-full">
-                      <div className="w-full h-32 rounded-xl bg-gradient-to-br from-surface to-surface-hover border border-border flex items-center justify-center p-3 mb-4">
-                        <img src={rt.thumbnail} alt={rt.title} className="max-h-20 max-w-full object-contain filter drop-shadow-md group-hover:scale-105 transition-transform" />
+                      <div className="w-full h-32 rounded-xl bg-gradient-to-br from-surface to-surface-hover border border-border flex items-center justify-center p-3 mb-4 overflow-hidden">
+                        {!failedRelatedImages[rt._id] && rt.thumbnail ? (
+                          <img
+                            src={rt.thumbnail}
+                            alt={rt.title}
+                            onError={() => setFailedRelatedImages(prev => ({ ...prev, [rt._id]: true }))}
+                            className="max-h-20 max-w-full object-contain filter drop-shadow-md group-hover:scale-105 transition-transform"
+                          />
+                        ) : (
+                          <div className="w-full h-full rounded-xl bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white font-bold text-2xl shadow-lg">
+                            {rt.title.charAt(0)}
+                          </div>
+                        )}
                       </div>
                       <h3 className="font-bold text-foreground group-hover:text-primary transition-colors truncate">{rt.title}</h3>
-                      <div className="flex items-center gap-1 text-xs text-muted mt-2">
-                        <Star className="text-warning fill-warning" size={14} />
-                        <span>{rt.avgRating ? rt.avgRating.toFixed(1) : '5.0'}</span>
+                      <div className="flex items-center justify-between gap-1 text-xs text-muted mt-2">
+                        <div className="flex items-center gap-1">
+                          <Star className="text-warning fill-warning" size={14} />
+                          <span>{rt.avgRating ? rt.avgRating.toFixed(1) : '5.0'}</span>
+                        </div>
+                        <span className="text-[11px] text-primary group-hover:underline flex items-center gap-1 font-medium">
+                          <ArrowLeftRight size={11} /> Compare
+                        </span>
                       </div>
                     </div>
                   </Link>
@@ -461,6 +498,17 @@ export default function ToolDetailsPage() {
           )}
 
         </div>
+
+        {/* Share Modal */}
+        <ShareModal
+          isOpen={isShareModalOpen}
+          onClose={() => setIsShareModalOpen(false)}
+          tool={{
+            title: tool.title,
+            shortDescription: tool.shortDescription,
+            category: tool.category,
+          }}
+        />
       </main>
       <Footer />
     </>

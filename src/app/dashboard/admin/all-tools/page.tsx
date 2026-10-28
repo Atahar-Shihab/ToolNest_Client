@@ -122,7 +122,7 @@ export default function AllToolsPage() {
           <p className="text-gray-400 mt-2">Approve, reject, or feature submitted tools.</p>
         </div>
         
-        <div className="flex space-x-2 bg-white/5 p-1 rounded-lg border border-white/10">
+        <div className="flex space-x-2 bg-surface-hover/50 p-1 rounded-lg border border-border">
           {(['all', 'pending', 'approved', 'rejected'] as StatusFilter[]).map((filter) => (
             <button
               key={filter}
@@ -130,7 +130,7 @@ export default function AllToolsPage() {
               className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                 statusFilter === filter
                   ? 'bg-primary text-black'
-                  : 'text-gray-400 hover:text-white hover:bg-white/10'
+                  : 'text-muted hover:text-foreground hover:bg-surface-hover'
               }`}
             >
               {filter.charAt(0).toUpperCase() + filter.slice(1)}
@@ -139,15 +139,15 @@ export default function AllToolsPage() {
         </div>
       </div>
 
-      <div className="glass rounded-xl overflow-x-auto border border-white/10">
+      <div className="glass rounded-xl overflow-x-auto border border-border">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="border-b border-white/10 bg-white/5">
-              <th className="p-4 font-semibold text-gray-300">Tool</th>
-              <th className="p-4 font-semibold text-gray-300">Category</th>
-              <th className="p-4 font-semibold text-gray-300">Status</th>
-              <th className="p-4 font-semibold text-gray-300">Featured</th>
-              <th className="p-4 font-semibold text-gray-300 text-right">Actions</th>
+            <tr className="border-b border-border bg-surface-hover/50">
+              <th className="p-4 font-semibold text-muted">Tool</th>
+              <th className="p-4 font-semibold text-muted">Category</th>
+              <th className="p-4 font-semibold text-muted">Status</th>
+              <th className="p-4 font-semibold text-muted">Featured</th>
+              <th className="p-4 font-semibold text-muted text-right">Actions</th>
             </tr>
           </thead>
           <tbody className="relative">
@@ -157,16 +157,17 @@ export default function AllToolsPage() {
               </tr>
             )}
             {tools.map((tool) => (
-              <tr key={tool._id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+              <tr key={tool._id} className="border-b border-border/50 hover:bg-surface-hover/50 transition-colors">
                 <td className="p-4">
                   <div className="flex items-center gap-3">
                     <img
                       src={tool.thumbnail || 'https://via.placeholder.com/40'}
+                      onError={(e) => { (e.currentTarget as HTMLImageElement).src = 'https://via.placeholder.com/40'; }}
                       alt={tool.title}
-                      className="w-10 h-10 rounded-md border border-white/20 object-cover"
+                      className="w-10 h-10 rounded-md border border-border object-cover"
                     />
                     <div>
-                      <div className="font-medium text-white flex items-center gap-2">
+                      <div className="font-medium text-foreground flex items-center gap-2">
                         {tool.title}
                         <a href={tool.website} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-primary">
                           <LinkIcon className="w-3 h-3" />
@@ -198,7 +199,7 @@ export default function AllToolsPage() {
                     onClick={() => handleToggleFeature(tool._id)}
                     disabled={actionLoading === tool._id}
                     className={`p-2 rounded-full transition-colors ${
-                      tool.isFeatured ? 'text-yellow-400 bg-yellow-400/20' : 'text-gray-500 hover:bg-white/10'
+                      tool.isFeatured ? 'text-yellow-400 bg-yellow-400/20' : 'text-muted hover:bg-surface-hover'
                     }`}
                   >
                     <Star className={`w-5 h-5 ${tool.isFeatured ? 'fill-yellow-400' : ''}`} />
@@ -253,9 +254,9 @@ export default function AllToolsPage() {
       <Modal isOpen={rejectModalOpen} onClose={() => setRejectModalOpen(false)} title="Reject Tool">
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Rejection Feedback</label>
+            <label className="block text-sm font-medium text-muted mb-2">Rejection Feedback</label>
             <textarea
-              className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-primary transition-colors min-h-[100px]"
+              className="w-full bg-surface border border-border rounded-lg p-3 text-foreground placeholder:text-muted focus:outline-none focus:border-primary transition-colors min-h-[100px]"
               placeholder="Explain why this tool is being rejected..."
               value={rejectionFeedback}
               onChange={(e) => setRejectionFeedback(e.target.value)}

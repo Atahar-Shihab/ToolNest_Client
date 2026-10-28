@@ -75,24 +75,24 @@ export default function ReviewsPage() {
     >
       <div>
         <h1 className="text-3xl font-bold text-gradient">Manage Reviews</h1>
-        <p className="text-gray-400 mt-2">Monitor and manage all user reviews.</p>
+        <p className="text-muted mt-2">Monitor and manage all user reviews.</p>
       </div>
 
-      <div className="glass rounded-xl overflow-x-auto border border-white/10">
+      <div className="glass rounded-xl overflow-x-auto border border-border">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="border-b border-white/10 bg-white/5">
-              <th className="p-4 font-semibold text-gray-300">User</th>
-              <th className="p-4 font-semibold text-gray-300">Tool</th>
-              <th className="p-4 font-semibold text-gray-300">Rating</th>
-              <th className="p-4 font-semibold text-gray-300 min-w-[200px]">Comment</th>
-              <th className="p-4 font-semibold text-gray-300">Date</th>
-              <th className="p-4 font-semibold text-gray-300 text-right">Actions</th>
+            <tr className="border-b border-border bg-surface-hover/50">
+              <th className="p-4 font-semibold text-muted">User</th>
+              <th className="p-4 font-semibold text-muted">Tool</th>
+              <th className="p-4 font-semibold text-muted">Rating</th>
+              <th className="p-4 font-semibold text-muted min-w-[200px]">Comment</th>
+              <th className="p-4 font-semibold text-muted">Date</th>
+              <th className="p-4 font-semibold text-muted text-right">Actions</th>
             </tr>
           </thead>
           <tbody>
             {reviews.map((review) => (
-              <tr key={review._id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+              <tr key={review._id} className="border-b border-border/50 hover:bg-surface-hover/50 transition-colors">
                 <td className="p-4">
                   <div className="flex items-center gap-3">
                     <img
@@ -101,12 +101,12 @@ export default function ReviewsPage() {
                       className="w-8 h-8 rounded-full"
                     />
                     <div>
-                      <div className="font-medium text-white text-sm">{review.userName}</div>
+                      <div className="font-medium text-foreground text-sm">{review.userName}</div>
                       <div className="text-xs text-gray-500">{review.userEmail}</div>
                     </div>
                   </div>
                 </td>
-                <td className="p-4 text-gray-300 text-sm">
+                <td className="p-4 text-foreground text-sm">
                   {typeof review.toolId === 'object' ? review.toolId.title : 'Unknown Tool'}
                 </td>
                 <td className="p-4">
@@ -116,7 +116,7 @@ export default function ReviewsPage() {
                     ))}
                   </div>
                 </td>
-                <td className="p-4 text-gray-400 text-sm truncate max-w-xs" title={review.comment}>
+                <td className="p-4 text-muted text-sm truncate max-w-xs" title={review.comment}>
                   {review.comment}
                 </td>
                 <td className="p-4 text-gray-500 text-sm">

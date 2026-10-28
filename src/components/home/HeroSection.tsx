@@ -2,13 +2,14 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { Search, Sparkles } from "lucide-react";
+import { Search, Sparkles, X, Flame } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 export function HeroSection() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const categories = ["Writing", "Coding", "Design", "Marketing", "Productivity", "Research"];
+  const quickSearches = ["ChatGPT", "Cursor", "Claude", "Midjourney", "Bolt.new"];
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,7 +42,7 @@ export function HeroSection() {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-xs sm:text-sm font-semibold text-primary mb-6"
           >
             <Sparkles size={15} />
-            <span>Discover & Compare 500+ Top AI Tools</span>
+            <span>Discover & Compare 50+ Top AI Tools</span>
           </motion.div>
 
           {/* Heading */}
@@ -71,7 +72,10 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <form onSubmit={handleSearch} className="flex flex-col sm:flex-row items-stretch sm:items-center glass rounded-2xl sm:rounded-full p-2 pl-4 sm:pl-6 gap-2 border border-white/10 shadow-2xl">
+            <form
+              onSubmit={handleSearch}
+              className="flex flex-col sm:flex-row items-stretch sm:items-center glass rounded-2xl sm:rounded-full p-2 pl-4 sm:pl-6 gap-2 border border-border focus-within:border-primary/60 focus-within:ring-2 focus-within:ring-primary/20 shadow-2xl transition-all"
+            >
               <div className="flex items-center flex-1 min-w-0 py-1.5 sm:py-0">
                 <Search className="h-5 w-5 text-muted mr-3 shrink-0" />
                 <input 
@@ -81,11 +85,41 @@ export function HeroSection() {
                   placeholder="Search AI tools by name or category..."
                   className="w-full bg-transparent border-none outline-none text-foreground placeholder:text-muted/70 text-sm sm:text-base truncate"
                 />
+                {searchQuery && (
+                  <button
+                    type="button"
+                    onClick={() => setSearchQuery("")}
+                    className="text-muted hover:text-foreground p-1 mr-1 transition-colors rounded-full"
+                    aria-label="Clear search"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                )}
               </div>
               <Button type="submit" className="rounded-xl sm:rounded-full px-7 py-3 sm:py-2.5 font-bold shrink-0 shadow-lg bg-gradient-to-r from-primary to-secondary text-white">
                 Search
               </Button>
             </form>
+
+            {/* Quick Popular Searches */}
+            <div className="flex items-center justify-center gap-2 mt-3 text-xs text-muted flex-wrap">
+              <span className="flex items-center gap-1 text-[11px] font-semibold text-primary">
+                <Flame size={12} className="text-primary" /> Popular:
+              </span>
+              {quickSearches.map((item) => (
+                <button
+                  key={item}
+                  type="button"
+                  onClick={() => {
+                    setSearchQuery(item);
+                    router.push(`/tools?search=${encodeURIComponent(item)}`);
+                  }}
+                  className="text-muted hover:text-foreground hover:underline transition-colors cursor-pointer text-xs"
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
           </motion.div>
 
           {/* Categories */}
@@ -99,7 +133,7 @@ export function HeroSection() {
               <button
                 key={cat}
                 onClick={() => handleCategoryClick(cat)}
-                className="px-3.5 py-1.5 glass rounded-full text-xs sm:text-sm font-medium hover:bg-surface-hover cursor-pointer transition-colors text-foreground"
+                className="px-3.5 py-1.5 glass rounded-full text-xs sm:text-sm font-medium hover:bg-surface-hover hover:border-primary/40 border border-border cursor-pointer transition-all text-foreground"
               >
                 {cat}
               </button>
