@@ -102,35 +102,35 @@ export default function UsersPage() {
     >
       <div>
         <h1 className="text-3xl font-bold text-gradient">Manage Users</h1>
-        <p className="text-gray-400 mt-2">View and manage all registered users.</p>
+        <p className="text-muted mt-2">View and manage all registered users.</p>
       </div>
 
-      <div className="glass rounded-xl overflow-x-auto border border-white/10">
+      <div className="glass rounded-xl overflow-x-auto border border-border">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="border-b border-white/10 bg-white/5">
-              <th className="p-4 font-semibold text-gray-300">User</th>
-              <th className="p-4 font-semibold text-gray-300">Email</th>
-              <th className="p-4 font-semibold text-gray-300">Role</th>
-              <th className="p-4 font-semibold text-gray-300">Status</th>
-              <th className="p-4 font-semibold text-gray-300">Joined Date</th>
-              <th className="p-4 font-semibold text-gray-300 text-right">Actions</th>
+            <tr className="border-b border-border bg-surface-hover/50">
+              <th className="p-4 font-semibold text-muted">User</th>
+              <th className="p-4 font-semibold text-muted">Email</th>
+              <th className="p-4 font-semibold text-muted">Role</th>
+              <th className="p-4 font-semibold text-muted">Status</th>
+              <th className="p-4 font-semibold text-muted">Joined Date</th>
+              <th className="p-4 font-semibold text-muted text-right">Actions</th>
             </tr>
           </thead>
           <tbody>
             {users.map((u) => (
-              <tr key={u._id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+              <tr key={u._id} className="border-b border-border/50 hover:bg-surface-hover/50 transition-colors">
                 <td className="p-4">
                   <div className="flex items-center gap-3">
                     <img
                       src={u.photoURL || `https://ui-avatars.com/api/?name=${u.name}&background=random`}
                       alt={u.name}
-                      className="w-10 h-10 rounded-full border border-white/20"
+                      className="w-10 h-10 rounded-full border border-border"
                     />
-                    <span className="font-medium text-white">{u.name}</span>
+                    <span className="font-medium text-foreground">{u.name}</span>
                   </div>
                 </td>
-                <td className="p-4 text-gray-400">{u.email}</td>
+                <td className="p-4 text-muted">{u.email}</td>
                 <td className="p-4">
                   <Badge variant={u.role === 'admin' ? 'default' : 'secondary'} className="capitalize">
                     {u.role === 'admin' && <Shield className="w-3 h-3 mr-1" />}
@@ -145,7 +145,7 @@ export default function UsersPage() {
                     <span className="text-gray-500 text-sm">Standard</span>
                   )}
                 </td>
-                <td className="p-4 text-gray-400">
+                <td className="p-4 text-muted">
                   {new Date(u.createdAt).toLocaleDateString()}
                 </td>
                 <td className="p-4 text-right">

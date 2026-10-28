@@ -15,6 +15,7 @@ import Link from "next/link";
 export function FeaturedTools() {
   const [tools, setTools] = useState<Tool[]>([]);
   const [loading, setLoading] = useState(true);
+  const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     const fetchFeatured = async () => {
@@ -29,6 +30,10 @@ export function FeaturedTools() {
     };
     fetchFeatured();
   }, []);
+
+  const handleImageError = (id: string) => {
+    setFailedImages((prev) => ({ ...prev, [id]: true }));
+  };
 
   const container = {
     hidden: { opacity: 0 },
@@ -71,12 +76,19 @@ export function FeaturedTools() {
                 <Card className="h-full flex flex-col group glass-card">
                   <CardContent className="p-6 flex flex-col h-full">
                     {/* Cover Thumbnail */}
-                    <div className="w-full h-44 relative rounded-xl overflow-hidden mb-4 bg-surface border border-border">
-                      <img 
-                        src={tool.thumbnail} 
-                        alt={tool.title} 
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                      />
+                    <div className="w-full h-44 relative rounded-xl overflow-hidden mb-4 bg-surface border border-border shadow-inner">
+                      {!failedImages[tool._id] && tool.thumbnail ? (
+                        <img 
+                          src={tool.thumbnail} 
+                          alt={tool.title} 
+                          onError={() => handleImageError(tool._id)}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white font-bold text-4xl shadow-lg">
+                          {tool.title.charAt(0)}
+                        </div>
+                      )}
                       <div className="absolute top-2.5 right-2.5">
                         <span className="bg-black/70 backdrop-blur-md text-white text-[11px] px-2.5 py-1 rounded-md border border-white/20 font-bold uppercase tracking-wider shadow-md">
                           {tool.pricing}

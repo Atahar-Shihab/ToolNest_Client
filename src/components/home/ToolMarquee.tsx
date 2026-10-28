@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Star, Sparkles, Flame, ArrowUpRight } from "lucide-react";
+import { useState } from "react";
+import { Star, Flame } from "lucide-react";
 import Link from "next/link";
 
 interface MarqueeItem {
@@ -32,6 +32,12 @@ const row2Items: MarqueeItem[] = [
 ];
 
 export function ToolMarquee() {
+  const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
+
+  const handleImageError = (id: string) => {
+    setFailedImages((prev) => ({ ...prev, [id]: true }));
+  };
+
   const duplicatedRow1 = [...row1Items, ...row1Items, ...row1Items];
   const duplicatedRow2 = [...row2Items, ...row2Items, ...row2Items];
 
@@ -51,29 +57,40 @@ export function ToolMarquee() {
           Trending <span className="text-gradient">AI Ecosystem</span>
         </h2>
         <p className="text-muted max-w-xl mx-auto text-base">
-          Swipe through continuous live updates of top rated AI tools across writing, coding, video, and design.
+          Hover over any tool to pause. Click to instantly discover and compare in the directory.
         </p>
       </div>
 
       {/* Row 1: Left to Right Marquee */}
       <div className="mb-6 relative flex overflow-hidden select-none">
-        <motion.div
-          className="flex gap-6 min-w-max"
-          animate={{ x: ["0%", "-33.333%"] }}
-          transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
-        >
+        <div className="animate-marquee-left gap-6 select-none">
           {duplicatedRow1.map((tool, index) => (
-            <Link key={`r1-${tool.id}-${index}`} href="/tools" className="group">
+            <Link
+              key={`r1-${tool.id}-${index}`}
+              href={`/tools?search=${encodeURIComponent(tool.title)}`}
+              className="group"
+            >
               <div className="w-72 glass-card p-3 rounded-2xl flex items-center gap-4 hover:border-primary/50 transition-all border border-border bg-surface/70 backdrop-blur-xl shadow-lg">
-                <img
-                  src={tool.image}
-                  alt={tool.title}
-                  className="w-16 h-16 rounded-xl object-cover border border-border group-hover:scale-105 transition-transform"
-                />
+                {!failedImages[`r1-${tool.id}`] ? (
+                  <img
+                    src={tool.image}
+                    alt={tool.title}
+                    onError={() => handleImageError(`r1-${tool.id}`)}
+                    className="w-16 h-16 rounded-xl object-cover border border-border group-hover:scale-105 transition-transform shrink-0"
+                  />
+                ) : (
+                  <div className="w-16 h-16 rounded-xl bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white font-bold text-lg shrink-0 border border-border">
+                    {tool.title.charAt(0)}
+                  </div>
+                )}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between gap-1 mb-1">
-                    <h4 className="font-bold text-sm text-foreground truncate group-hover:text-primary transition-colors">{tool.title}</h4>
-                    <span className="text-[10px] font-extrabold bg-primary/10 text-primary px-1.5 py-0.5 rounded border border-primary/20">{tool.tag}</span>
+                    <h4 className="font-bold text-sm text-foreground truncate group-hover:text-primary transition-colors">
+                      {tool.title}
+                    </h4>
+                    <span className="text-[10px] font-extrabold bg-primary/10 text-primary px-1.5 py-0.5 rounded border border-primary/20 shrink-0">
+                      {tool.tag}
+                    </span>
                   </div>
                   <p className="text-xs text-muted font-medium mb-1.5">{tool.category}</p>
                   <div className="flex items-center gap-1 text-xs text-warning font-bold">
@@ -84,28 +101,39 @@ export function ToolMarquee() {
               </div>
             </Link>
           ))}
-        </motion.div>
+        </div>
       </div>
 
       {/* Row 2: Right to Left Marquee */}
       <div className="relative flex overflow-hidden select-none">
-        <motion.div
-          className="flex gap-6 min-w-max"
-          animate={{ x: ["-33.333%", "0%"] }}
-          transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
-        >
+        <div className="animate-marquee-right gap-6 select-none">
           {duplicatedRow2.map((tool, index) => (
-            <Link key={`r2-${tool.id}-${index}`} href="/tools" className="group">
+            <Link
+              key={`r2-${tool.id}-${index}`}
+              href={`/tools?search=${encodeURIComponent(tool.title)}`}
+              className="group"
+            >
               <div className="w-72 glass-card p-3 rounded-2xl flex items-center gap-4 hover:border-secondary/50 transition-all border border-border bg-surface/70 backdrop-blur-xl shadow-lg">
-                <img
-                  src={tool.image}
-                  alt={tool.title}
-                  className="w-16 h-16 rounded-xl object-cover border border-border group-hover:scale-105 transition-transform"
-                />
+                {!failedImages[`r2-${tool.id}`] ? (
+                  <img
+                    src={tool.image}
+                    alt={tool.title}
+                    onError={() => handleImageError(`r2-${tool.id}`)}
+                    className="w-16 h-16 rounded-xl object-cover border border-border group-hover:scale-105 transition-transform shrink-0"
+                  />
+                ) : (
+                  <div className="w-16 h-16 rounded-xl bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white font-bold text-lg shrink-0 border border-border">
+                    {tool.title.charAt(0)}
+                  </div>
+                )}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between gap-1 mb-1">
-                    <h4 className="font-bold text-sm text-foreground truncate group-hover:text-secondary transition-colors">{tool.title}</h4>
-                    <span className="text-[10px] font-extrabold bg-secondary/10 text-secondary px-1.5 py-0.5 rounded border border-secondary/20">{tool.tag}</span>
+                    <h4 className="font-bold text-sm text-foreground truncate group-hover:text-secondary transition-colors">
+                      {tool.title}
+                    </h4>
+                    <span className="text-[10px] font-extrabold bg-secondary/10 text-secondary px-1.5 py-0.5 rounded border border-secondary/20 shrink-0">
+                      {tool.tag}
+                    </span>
                   </div>
                   <p className="text-xs text-muted font-medium mb-1.5">{tool.category}</p>
                   <div className="flex items-center gap-1 text-xs text-warning font-bold">
@@ -116,7 +144,7 @@ export function ToolMarquee() {
               </div>
             </Link>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

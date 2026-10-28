@@ -24,6 +24,7 @@ export default function ToolDetailsPage() {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [imageFailed, setImageFailed] = useState(false);
+  const [failedRelatedImages, setFailedRelatedImages] = useState<Record<string, boolean>>({});
   const [activeTab, setActiveTab] = useState<'overview' | 'features' | 'reviews'>('overview');
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   
@@ -465,8 +466,19 @@ export default function ToolDetailsPage() {
                 {relatedTools.map(rt => (
                   <Link href={`/tools/${rt._id}`} key={rt._id} className="block group">
                     <div className="glass-card p-4 flex flex-col h-full">
-                      <div className="w-full h-32 rounded-xl bg-gradient-to-br from-surface to-surface-hover border border-border flex items-center justify-center p-3 mb-4">
-                        <img src={rt.thumbnail} alt={rt.title} className="max-h-20 max-w-full object-contain filter drop-shadow-md group-hover:scale-105 transition-transform" />
+                      <div className="w-full h-32 rounded-xl bg-gradient-to-br from-surface to-surface-hover border border-border flex items-center justify-center p-3 mb-4 overflow-hidden">
+                        {!failedRelatedImages[rt._id] && rt.thumbnail ? (
+                          <img
+                            src={rt.thumbnail}
+                            alt={rt.title}
+                            onError={() => setFailedRelatedImages(prev => ({ ...prev, [rt._id]: true }))}
+                            className="max-h-20 max-w-full object-contain filter drop-shadow-md group-hover:scale-105 transition-transform"
+                          />
+                        ) : (
+                          <div className="w-full h-full rounded-xl bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white font-bold text-2xl shadow-lg">
+                            {rt.title.charAt(0)}
+                          </div>
+                        )}
                       </div>
                       <h3 className="font-bold text-foreground group-hover:text-primary transition-colors truncate">{rt.title}</h3>
                       <div className="flex items-center justify-between gap-1 text-xs text-muted mt-2">
