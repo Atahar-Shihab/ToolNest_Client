@@ -13,6 +13,14 @@ export const metadata: Metadata = {
   description: "Discover, compare, filter, and review 50+ top curated AI tools across writing, coding, design, video, and productivity.",
   keywords: ["AI Tools", "Artificial Intelligence", "ChatGPT", "Claude", "Cursor", "AI Directory", "Productivity"],
   authors: [{ name: "ToolNest Team" }],
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "32x32" },
+    ],
+    shortcut: "/icon.svg",
+    apple: "/apple-icon.svg",
+  },
   openGraph: {
     title: "ToolNest | AI Tool Hub",
     description: "Explore, compare, and review the best AI tools for developers, designers, and creators.",

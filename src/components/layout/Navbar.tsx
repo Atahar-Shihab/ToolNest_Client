@@ -3,7 +3,8 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Moon, Sun, Menu, X, Rocket, User as UserIcon, LayoutDashboard, Bookmark, PlusCircle, LogOut, ShieldCheck, ChevronDown } from "lucide-react";
+import { Moon, Sun, Menu, X, User as UserIcon, LayoutDashboard, Bookmark, PlusCircle, LogOut, ShieldCheck, ChevronDown } from "lucide-react";
+import { ToolNestLogo } from "@/components/ui/ToolNestLogo";
 import { Button } from "@/components/ui/Button";
 import { useTheme } from "@/hooks/useTheme";
 import { useAuth } from "@/hooks/useAuth";
@@ -57,11 +58,8 @@ export function Navbar() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2.5 group">
-            <div className="bg-gradient-to-tr from-primary to-secondary p-2 rounded-xl group-hover:scale-105 transition-transform shadow-md shadow-primary/20">
-              <Rocket className="h-5 w-5 text-white" />
-            </div>
-            <span className="text-xl font-bold tracking-tight text-foreground">ToolNest</span>
+          <Link href="/" className="flex items-center group">
+            <ToolNestLogo size={36} withText={true} />
           </Link>
 
           {/* Desktop Nav */}

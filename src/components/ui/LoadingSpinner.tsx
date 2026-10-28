@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Sparkles, Rocket } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 interface LoadingSpinnerProps {
   label?: string;

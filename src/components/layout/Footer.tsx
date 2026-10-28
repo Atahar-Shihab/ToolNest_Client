@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Rocket, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
+import { ToolNestLogo } from "@/components/ui/ToolNestLogo";
 
 export function Footer() {
   return (
@@ -8,11 +9,8 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Column 1: Brand & Bio */}
           <div className="space-y-4">
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="bg-gradient-to-tr from-primary to-secondary p-1.5 rounded-lg shadow-md">
-                <Rocket className="h-5 w-5 text-white" />
-              </div>
-              <span className="text-xl font-bold tracking-tight text-foreground">ToolNest</span>
+            <Link href="/" className="flex items-center group">
+              <ToolNestLogo size={32} withText={true} />
             </Link>
             <p className="text-muted text-sm max-w-xs leading-relaxed">
               Discover, compare, and review top AI tools for your next project. 
