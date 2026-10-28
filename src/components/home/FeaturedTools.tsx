@@ -75,17 +75,19 @@ export function FeaturedTools() {
               <motion.div key={tool._id} variants={item}>
                 <Card className="h-full flex flex-col group glass-card">
                   <CardContent className="p-6 flex flex-col h-full">
-                    {/* Cover Thumbnail */}
-                    <div className="w-full h-44 relative rounded-xl overflow-hidden mb-4 bg-surface border border-border shadow-inner">
+                    {/* Brand Logo Preview Container */}
+                    <div className="w-full h-44 relative rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-surface to-surface-hover/80 border border-border flex items-center justify-center p-6 shadow-inner group-hover:border-primary/40 transition-colors">
                       {!failedImages[tool._id] && tool.thumbnail ? (
-                        <img 
-                          src={tool.thumbnail} 
-                          alt={tool.title} 
-                          onError={() => handleImageError(tool._id)}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                        />
+                        <div className="w-20 h-20 rounded-2xl bg-surface/95 border border-border flex items-center justify-center p-3.5 shadow-md group-hover:scale-110 transition-transform duration-300">
+                          <img 
+                            src={tool.thumbnail} 
+                            alt={tool.title} 
+                            onError={() => handleImageError(tool._id)}
+                            className="w-full h-full object-contain filter drop-shadow-sm" 
+                          />
+                        </div>
                       ) : (
-                        <div className="w-full h-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white font-bold text-4xl shadow-lg">
+                        <div className="w-20 h-20 rounded-2xl bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white font-bold text-3xl shadow-lg">
                           {tool.title.charAt(0)}
                         </div>
                       )}

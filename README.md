@@ -1,16 +1,17 @@
-# 🚀 ToolNest Client — AI Tools Directory Platform
+# 🚀 ToolNest Client — AI Tools Discovery & Comparison Platform
 
 <div align="center">
 
-![ToolNest Banner](https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80)
+![ToolNest Banner](./public/toolnest-banner.svg)
 
-### Discover, Compare, & Review 500+ Top AI Tools
+### Discover, Compare, & Benchmark 50+ Curated Frontier AI Tools
 
 [![Live Website](https://img.shields.io/badge/🌐_Live_Website-tool--nest--client.vercel.app-00D4FF?style=for-the-badge&logo=vercel)](https://tool-nest-client.vercel.app)
 [![Backend API](https://img.shields.io/badge/⚡_Live_API-toolnest--server.onrender.com-46E3B7?style=for-the-badge&logo=render)](https://toolnest-server.onrender.com/api)
-[![Next.js](https://img.shields.io/badge/Next.js_16-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![Next.js 16](https://img.shields.io/badge/Next.js_16-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS_v4-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
 ---
 
@@ -25,97 +26,138 @@
 
 ---
 
-## 🌟 Key Features
+## 📖 Overview
 
-### 🏠 Rich Landing Page & UI Aesthetics
-- **Live Trending AI Tool Swiper**: Continuous 2-row infinite floating marquee showcasing trending AI tools with star ratings, pricing badges, and categories.
-- **Responsive Mobile Search**: Intelligent hero search bar optimized for desktop, tablet, and mobile screens without text truncation.
-- **Platform Analytics Banner**: Animated counter metrics showcasing 500+ AI Tools, 10,000+ Active Users, and 25,000+ Reviews.
-- **Dark Glassmorphism UI**: Curated dark palette with subtle blur backdrop filters, glowing blur blobs, and smooth micro-animations.
+**ToolNest** is a modern, high-performance web platform designed to discover, benchmark, compare, and review top curated artificial intelligence tools across 8 major domains: **Productivity, Coding, Design, Video, Music, Writing, Marketing, and Research**.
 
-### 🔍 Discovery & Detailed Metadata
-- **Multi-Filter Tool Directory**: Filter by search keywords, category (*Writing, Coding, Design, Marketing, Productivity, Research, Video, Music*), pricing model (*Free Plan, Free Trial, Paid*), and sort order (*Newest, Highest Rated, Most Bookmarked, A-Z*).
-- **AI Model & History Cards**: Tool detail pages display detailed AI specs:
-  - 🤖 **AI Model**: e.g., *GPT-4o*, *Claude 3.5 Sonnet*, *Midjourney v6.1*, *Gen-3 Alpha*
-  - 🏢 **Company Origin**: e.g., *OpenAI*, *Anthropic*, *Anysphere*, *Runway AI*
-  - 📅 **Launch Year & History**: Historical background and founding story
-- **Community Star Ratings & Reviews**: Real-time review submission with average score recalculation.
-- **User Bookmarks**: One-click bookmark toggle saved to user profile.
-
-### 📊 Comprehensive User & Admin Dashboards
-- **User Dashboard**: Submit new tools, manage submitted applications, track reviews, and manage saved bookmarks.
-- **Admin Management Suite**:
-  - **Tool Moderation**: Approve or reject user-submitted tools with feedback.
-  - **User Role Management**: Upgrade/downgrade user roles (`user` ↔ `admin`).
-  - **Review Moderation**: Monitor and purge spam reviews.
-  - **Analytics Charts**: Visual category distribution breakdown and platform metrics.
-
-### 💳 Pro Membership & Payments
-- **Stripe Integration**: One-time $5.00 lifetime Pro upgrade with 256-bit encrypted credit card processing via Stripe Elements.
+Built with Next.js 16 (App Router + Turbopack), React 19, TypeScript, and Tailwind CSS v4, ToolNest delivers a fluid, dark-first glassmorphism user experience with instantaneous search filtering, interactive goal-based tool matching, side-by-side technical comparisons, and full administrative moderation.
 
 ---
 
-## 🖥️ Application Architecture & Page Overview
+## 🌟 Core Features
 
-| Route | View Description | Core Interactive Features |
+### 🏠 1. Landing Page & Interactive Ecosystem
+- **Live Trending AI Tool Swiper**: Continuous 2-row bi-directional marquee running on GPU-accelerated CSS keyframes with automatic hover-to-pause and instant directory filtering.
+- **Responsive Hero Search**: Mobile-optimized search input with real-time text clearing (`X`), popular trending tags (*ChatGPT, Cursor, Claude, Midjourney, Bolt.new*), and category quick-filters.
+- **Interactive AI Matchmaker**: 3-second objective wizard recommending tailored top-3 tools for coding, design, research, marketing, and video creation with engine specifications and share links.
+- **Zero-FOUC Theme Engine**: Synchronous `<head>` script detection preventing light/dark theme flash on server-side rendering while honoring user preference.
+
+### 🔍 2. AI Directory & Rich Metadata (`/tools`)
+- **Multi-Parameter Filter Grid**: Filter in real time by keyword search, category, pricing tier (*Free Plan, Free Trial, Paid*), and sort order (*Newest, Highest Rated, Most Bookmarked, A-Z*).
+- **Verified Real Brand Pictures**: Every tool card features authentic, verified brand logos delivered via high-speed global CDN, presented on floating glassmorphism preview tiles with monogram fallback resilience.
+- **Comprehensive Tool Specifications (`/tools/[id]`)**: Detailed breakdown of:
+  - 🤖 **Underlying AI Model**: e.g., *GPT-4o, Claude 3.5 Sonnet, OpenAI o1, Gemini 2.0 Flash, Midjourney v6.1*
+  - 🏢 **Company & Founding Team**: Origin history, launch year, and founding context
+  - 🏷️ **Feature Checklist**: Core technical and creative capabilities
+  - 🌐 **Direct Verified URLs**: Official links to tool web apps
+
+### ⚖️ 3. Side-by-Side Comparison Matrix (`/compare`)
+- Compare any two AI tools head-to-head across pricing models, model architectures, company backgrounds, and community ratings.
+- Quick "Compare" shortcut buttons embedded directly on tool cards and tool detail pages.
+
+### 🛡️ 4. Secure Route-Guarded Dashboards (`/dashboard`)
+- **Session Authentication Guard**: Strict layout-level protection redirecting unauthenticated visitors immediately to `/login` with smooth loading states.
+- **User Dashboard**: Submit new tools, manage pending/approved submissions, view personal reviews, and organize saved bookmarks.
+- **Admin Management Suite**:
+  - **Tool Moderation**: Review pending submissions and approve or reject with custom feedback reasons.
+  - **Review Moderation**: Monitor and delete reviews with real-time average star recalculation.
+  - **User Role Management**: Elevate or demote user permissions (`user` ↔ `admin`).
+  - **Visual Analytics Dashboard**: Recharts-powered distribution and category rating charts.
+
+### 💳 5. Pro Membership & Payments (`/payment`)
+- Integrated Stripe Elements checkout supporting one-time lifetime Pro upgrades ($5.00) with encrypted 256-bit payment processing.
+
+---
+
+## 🖥️ Page & Route Map
+
+| Route | View Description | Core Capabilities |
 | :--- | :--- | :--- |
-| `/` | 🏠 **Landing Page** | Live bi-directional swiper marquee, hero search, category quick-pills, counter stats, user testimonials, FAQ accordion |
-| `/tools` | 🔎 **Directory Page** | Real-time multi-filter tool grid (category, pricing, sort), search bar, pagination controls |
-| `/tools/[id]` | 📋 **Tool Detail Page** | Full descriptions, AI model specifications, company origin, launch year, historical context, review submission form, bookmark toggle |
-| `/payment` | 💳 **Pro Membership** | Stripe credit card checkout form, 256-bit security badge, instant Pro user role activation |
-| `/dashboard` | 📊 **User & Admin Hub** | User profile settings, submitted tools management, review history, saved bookmarks, and Admin Analytics charts |
-| `/about` | 👤 **About Developer** | Lead Developer profile card for Atahar Shihab with direct email, GitHub, LinkedIn, and Facebook icon links |
-| `/contact` | ✉️ **Contact Developer** | Interactive contact message form and direct developer social channels |
+| `/` | 🏠 **Landing Page** | Hero search, trending marquee swiper, interactive AI Matchmaker, stats counter, FAQs |
+| `/tools` | 🔎 **Directory Page** | Search, category filters, pricing filters, pagination, sort controls, brand logo tiles |
+| `/tools/[id]` | 📋 **Tool Detail Page** | Full specs, AI model details, company history, interactive review form, bookmark toggle, similar tools |
+| `/compare` | ⚖️ **Comparison Matrix** | Side-by-side diffing of any two AI tools |
+| `/login` | 🔑 **Sign In** | Email/password login, demo account shortcut, Google OAuth 2.0 |
+| `/register` | 📝 **Registration** | Account creation with form validation, Google OAuth 2.0 |
+| `/dashboard` | 📊 **User Dashboard** | Submission status, tool metrics, recent activity (Route-Guarded) |
+| `/dashboard/add-tool` | ➕ **Tool Submission** | Multi-field application with tag and feature chip management |
+| `/dashboard/my-tools` | 🛠️ **My Submissions** | Edit, delete, and view approval status of user-submitted tools |
+| `/dashboard/bookmarks` | 🔖 **Saved Tools** | Quick-access grid of bookmarked tools |
+| `/dashboard/admin/*` | 🛡️ **Admin Suite** | All Tools, Analytics charts, Review Moderation, User Roles (Admin RBAC) |
+| `/payment` | 💳 **Pro Upgrade** | Stripe PaymentIntent checkout |
+| `/about` | 👤 **About Developer** | Lead developer profile, story, and social links |
+| `/contact` | ✉️ **Contact Form** | Direct message submission interface |
 
 ---
 
 ## 🛠️ Technology Stack
 
-- **Framework**: [Next.js 16 (App Router & Turbopack)](https://nextjs.org/)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) + Custom Glassmorphism System
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Payments**: [@stripe/stripe-js](https://stripe.com/) & [@stripe/react-stripe-js](https://stripe.com/)
-- **Authentication**: [@react-oauth/google](https://www.npmjs.com/package/@react-oauth/google) & Axios JWT Interceptor
-- **Data Visualization**: [Recharts](https://recharts.org/)
-- **Deployment**: [Vercel](https://vercel.com)
+```
+Frontend:     Next.js 16 (App Router + Turbopack) • React 19 • TypeScript
+Styling:      Tailwind CSS v4 • Custom Glassmorphism Token System
+Animation:    Framer Motion • CSS GPU-Accelerated Keyframes
+Icons:        Lucide React
+Data Viz:     Recharts
+HTTP Client:  Axios (with JWT Bearer interceptor & auto-logout on expiry)
+Auth:         @react-oauth/google • JWT Token Storage
+Payments:     @stripe/stripe-js • @stripe/react-stripe-js
+Hosting:      Vercel
+```
 
 ---
 
-## 🚀 Environment Setup (.env.local)
+## 🚀 Getting Started
 
-Create a `.env.local` file in your root folder:
-```env
-NEXT_PUBLIC_API_URL=https://toolnest-server.onrender.com/api
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_your_stripe_publishable_key_here
-NEXT_PUBLIC_GOOGLE_CLIENT_ID=your_google_client_id_here.apps.googleusercontent.com
+### Prerequisites
+- Node.js 18.17+ or 20+
+- npm or pnpm or yarn
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/Atahar-Shihab/ToolNest_Client.git
+cd ToolNest_Client
 ```
 
-### Run Locally
+### 2. Configure Environment Variables
+Create a `.env.local` file in the root folder:
+```env
+NEXT_PUBLIC_API_URL=https://toolnest-server.onrender.com/api
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_your_stripe_publishable_key
+NEXT_PUBLIC_GOOGLE_CLIENT_ID=your_google_client_id.apps.googleusercontent.com
+```
+
+### 3. Install Dependencies & Run
 ```bash
 npm install
 npm run dev
 ```
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+### 4. Production Build
+```bash
+npm run build
+npm run start
+```
+
 ---
 
-## 🔑 Demo Credentials
+## 🔑 Demo Access Credentials
 
-| Role | Email | Password | Access Rights |
+| Role | Email | Password | Permissions |
 | :--- | :--- | :--- | :--- |
-| **Standard User** | `user@toolnest.com` | `User123!` | Submit tools, write reviews, bookmark tools, upgrade to Pro |
-| **Admin User** | `admin@toolnest.com` | `Admin123!` | Full access + approve/reject tools, manage users, delete reviews, analytics |
+| **Standard User** | `user@toolnest.com` | `User123!` | Submit tools, post reviews, bookmark tools, upgrade to Pro |
+| **Admin User** | `admin@toolnest.com` | `Admin123!` | Full access + approve/reject submissions, delete reviews, user RBAC, analytics |
+
+> **Tip:** You can also click the **"Try Demo Account"** button on the `/login` page to auto-fill and test immediately.
 
 ---
 
 ## 📬 Developer Contact
 
-Developed with ❤️ by **Atahar Shihab**:
-- 📧 Email: [![Email](https://img.shields.io/badge/-Email-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:shihabatahar@gmail.com)
-- 🐙 GitHub: [![GitHub](https://img.shields.io/badge/-GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/Atahar-Shihab)
-- 💼 LinkedIn: [![LinkedIn](https://img.shields.io/badge/-LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/atahar-shihab)
-- 📘 Facebook: [![Facebook](https://img.shields.io/badge/-Facebook-1877F2?style=flat&logo=facebook&logoColor=white)](https://www.facebook.com/atahar.shihab.740192/)
+Developed with passion by **Atahar Shihab**:
+- 📧 **Email**: [shihabatahar@gmail.com](mailto:shihabatahar@gmail.com)
+- 🐙 **GitHub**: [github.com/Atahar-Shihab](https://github.com/Atahar-Shihab)
+- 💼 **LinkedIn**: [linkedin.com/in/atahar-shihab](https://www.linkedin.com/in/atahar-shihab)
+- 📘 **Facebook**: [facebook.com/atahar.shihab.740192](https://www.facebook.com/atahar.shihab.740192/)
 
 License: [MIT](LICENSE)
