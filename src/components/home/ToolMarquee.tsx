@@ -14,21 +14,21 @@ interface MarqueeItem {
 }
 
 const row1Items: MarqueeItem[] = [
-  { id: "1", title: "ChatGPT", category: "Productivity", rating: 5.0, image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&auto=format&fit=crop&q=80", tag: "HOT" },
-  { id: "2", title: "Claude", category: "Productivity", rating: 5.0, image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=400&auto=format&fit=crop&q=80", tag: "POPULAR" },
-  { id: "3", title: "Midjourney", category: "Design", rating: 5.0, image: "https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?w=400&auto=format&fit=crop&q=80", tag: "CREATIVE" },
-  { id: "4", title: "Cursor", category: "Coding", rating: 4.9, image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&auto=format&fit=crop&q=80", tag: "NEW" },
-  { id: "5", title: "GitHub Copilot", category: "Coding", rating: 4.8, image: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=400&auto=format&fit=crop&q=80", tag: "PRO" },
-  { id: "6", title: "Perplexity", category: "Research", rating: 4.9, image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=400&auto=format&fit=crop&q=80", tag: "FAST" },
+  { id: "1", title: "ChatGPT", category: "Productivity", rating: 5.0, image: "https://www.google.com/s2/favicons?domain=chatgpt.com&sz=128", tag: "HOT" },
+  { id: "2", title: "Claude", category: "Productivity", rating: 5.0, image: "https://www.google.com/s2/favicons?domain=claude.ai&sz=128", tag: "POPULAR" },
+  { id: "3", title: "Midjourney", category: "Design", rating: 5.0, image: "https://www.google.com/s2/favicons?domain=midjourney.com&sz=128", tag: "CREATIVE" },
+  { id: "4", title: "Cursor", category: "Coding", rating: 4.9, image: "https://www.google.com/s2/favicons?domain=cursor.com&sz=128", tag: "NEW" },
+  { id: "5", title: "GitHub Copilot", category: "Coding", rating: 4.8, image: "https://www.google.com/s2/favicons?domain=github.com&sz=128", tag: "PRO" },
+  { id: "6", title: "Perplexity", category: "Research", rating: 4.9, image: "https://www.google.com/s2/favicons?domain=perplexity.ai&sz=128", tag: "FAST" },
 ];
 
 const row2Items: MarqueeItem[] = [
-  { id: "7", title: "Suno AI", category: "Music", rating: 5.0, image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&auto=format&fit=crop&q=80", tag: "AUDIO" },
-  { id: "8", title: "ElevenLabs", category: "Music", rating: 4.9, image: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=400&auto=format&fit=crop&q=80", tag: "VOICE" },
-  { id: "9", title: "Synthesia", category: "Video", rating: 4.8, image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=400&auto=format&fit=crop&q=80", tag: "AVATAR" },
-  { id: "10", title: "Runway Gen-2", category: "Video", rating: 4.9, image: "https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=400&auto=format&fit=crop&q=80", tag: "VFX" },
-  { id: "11", title: "Notion AI", category: "Productivity", rating: 4.8, image: "https://images.unsplash.com/photo-1517842645767-c639042777db?w=400&auto=format&fit=crop&q=80", tag: "DOCS" },
-  { id: "12", title: "Grammarly", category: "Writing", rating: 4.7, image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&auto=format&fit=crop&q=80", tag: "TEXT" },
+  { id: "7", title: "Suno AI", category: "Music", rating: 5.0, image: "https://www.google.com/s2/favicons?domain=suno.com&sz=128", tag: "AUDIO" },
+  { id: "8", title: "ElevenLabs", category: "Music", rating: 4.9, image: "https://www.google.com/s2/favicons?domain=elevenlabs.io&sz=128", tag: "VOICE" },
+  { id: "9", title: "Synthesia", category: "Video", rating: 4.8, image: "https://www.google.com/s2/favicons?domain=synthesia.io&sz=128", tag: "AVATAR" },
+  { id: "10", title: "Runway Gen-2", category: "Video", rating: 4.9, image: "https://www.google.com/s2/favicons?domain=runwayml.com&sz=128", tag: "VFX" },
+  { id: "11", title: "Notion AI", category: "Productivity", rating: 4.8, image: "https://www.google.com/s2/favicons?domain=notion.so&sz=128", tag: "DOCS" },
+  { id: "12", title: "Grammarly", category: "Writing", rating: 4.7, image: "https://www.google.com/s2/favicons?domain=grammarly.com&sz=128", tag: "TEXT" },
 ];
 
 export function ToolMarquee() {
@@ -72,12 +72,14 @@ export function ToolMarquee() {
             >
               <div className="w-72 glass-card p-3 rounded-2xl flex items-center gap-4 hover:border-primary/50 transition-all border border-border bg-surface/70 backdrop-blur-xl shadow-lg">
                 {!failedImages[`r1-${tool.id}`] ? (
-                  <img
-                    src={tool.image}
-                    alt={tool.title}
-                    onError={() => handleImageError(`r1-${tool.id}`)}
-                    className="w-16 h-16 rounded-xl object-cover border border-border group-hover:scale-105 transition-transform shrink-0"
-                  />
+                  <div className="w-16 h-16 rounded-xl bg-surface/90 border border-border flex items-center justify-center p-2.5 shrink-0 group-hover:scale-105 transition-transform shadow-sm">
+                    <img
+                      src={tool.image}
+                      alt={tool.title}
+                      onError={() => handleImageError(`r1-${tool.id}`)}
+                      className="w-full h-full object-contain filter drop-shadow-sm"
+                    />
+                  </div>
                 ) : (
                   <div className="w-16 h-16 rounded-xl bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white font-bold text-lg shrink-0 border border-border">
                     {tool.title.charAt(0)}
@@ -115,12 +117,14 @@ export function ToolMarquee() {
             >
               <div className="w-72 glass-card p-3 rounded-2xl flex items-center gap-4 hover:border-secondary/50 transition-all border border-border bg-surface/70 backdrop-blur-xl shadow-lg">
                 {!failedImages[`r2-${tool.id}`] ? (
-                  <img
-                    src={tool.image}
-                    alt={tool.title}
-                    onError={() => handleImageError(`r2-${tool.id}`)}
-                    className="w-16 h-16 rounded-xl object-cover border border-border group-hover:scale-105 transition-transform shrink-0"
-                  />
+                  <div className="w-16 h-16 rounded-xl bg-surface/90 border border-border flex items-center justify-center p-2.5 shrink-0 group-hover:scale-105 transition-transform shadow-sm">
+                    <img
+                      src={tool.image}
+                      alt={tool.title}
+                      onError={() => handleImageError(`r2-${tool.id}`)}
+                      className="w-full h-full object-contain filter drop-shadow-sm"
+                    />
+                  </div>
                 ) : (
                   <div className="w-16 h-16 rounded-xl bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white font-bold text-lg shrink-0 border border-border">
                     {tool.title.charAt(0)}

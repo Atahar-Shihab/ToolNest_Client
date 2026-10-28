@@ -18,6 +18,8 @@ export default function DashboardHome() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    if (!user) return;
+
     const fetchDashboardData = async () => {
       try {
         setIsLoading(true);
@@ -34,8 +36,9 @@ export default function DashboardHome() {
         setIsLoading(false);
       }
     };
+
     fetchDashboardData();
-  }, []);
+  }, [user]);
 
   const approvedToolsCount = tools.filter(t => t.status === 'approved').length;
   const pendingToolsCount = tools.filter(t => t.status === 'pending').length;
@@ -56,7 +59,7 @@ export default function DashboardHome() {
       className="space-y-8"
     >
       <div>
-        <h1 className="text-3xl font-bold text-gradient mb-2">Welcome back, {user?.name}!</h1>
+        <h1 className="text-3xl font-bold text-gradient mb-2">Welcome back, {user?.name || 'Creator'}!</h1>
         <p className="text-muted">Here's an overview of your tools and activity.</p>
       </div>
 
