@@ -1,4 +1,4 @@
-# 🚀 ToolNest Client — AI Tools Discovery & Comparison Platform
+# <img src="./public/icon.svg" width="34" height="34" align="center" alt="ToolNest Logo" /> ToolNest Client — AI Tools Discovery & Comparison Platform
 
 <div align="center">
 
